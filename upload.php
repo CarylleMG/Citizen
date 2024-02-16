@@ -15,20 +15,53 @@
             die('Connection Failed :'.$conn->connect_error);
         }
         else{
-            $stmt = $conn->prepare("INSERT into `citizen` (`LastName`, `FirstName`, `Contact`)
-                values(?, ?, ?)");
-            $stmt->bind_param("sss", $LastName, $FirstName, $phone);
-            $stmt->execute();
+            //Find Citizen ID
+            $selectcit = "SELECT * FROM `citizen` WHERE LastName='$LastName' AND FirstName='$FirstName' AND Contact='$phone'";
+            $resultcit = $conn -> query($selectcit);
 
-            // find culprit id
-            $select = "SELECT * FROM `culprit` WHERE LastName='$suslname' AND FirstName='$susfname' AND Address='$place'";
-            $result = $conn -> query($select); 
+            if($rep_count = mysqli_num_rows($resultcit) > 0) {
+                // if row exist, add offense
+                    $repCount = $rep_count + 1;
+                    // get culprit values
+                    foreach($resultcit as $vals) {
+                        $citizenId = $vals['CitizenID'];
+                        $LastName = $vals['LastName'];
+                        $FirstName = $vals['FirstName'];
+                        $phone = $vals['Contact'];
+                    }
+                }
+                else {
+                    $stmt = $conn->prepare("INSERT into `citizen` (`LastName`, `FirstName`, `Contact`)
+                    values(?, ?, ?)");
+                    $stmt->bind_param("sss", $LastName, $FirstName, $phone);
+                    $stmt->execute();
+                    
+                    // find culprit id
+                    $selectcit = "SELECT * FROM `citizen` ORDER BY CitizenID DESC LIMIT 1";
+                    $resultcit = $conn -> query($selectcit); 
+                    
+                    if($rep_count = mysqli_num_rows($resultcit) > 0) {
+                    // if row exist, add offense
+                        $repCount = $rep_count;
+                        // get culprit values
+                        foreach($resultcit as $vals) {
+                            $citizenId = $vals['CitizenID'];
+                            $LastName = $vals['LastName'];
+                            $FirstName = $vals['FirstName'];
+                            $phone = $vals['Contact'];
+                        }
+                    }
+                }
+
+            // find Culprit ID
+            $selectculp = "SELECT * FROM `culprit` WHERE LastName='$suslname' AND FirstName='$susfname' AND Address='$place'";
+            $resultculp = $conn -> query($selectculp);
             
-            if($row_count = mysqli_num_rows($result) > 0) {
+            if($row_count = mysqli_num_rows($resultculp) > 0) {
             // if row exist, add offense
                 $offCount = $row_count + 1;
                 // get culprit values
-                foreach($result as $val) {
+                foreach($resultculp as $val) {
                     $culpritId = $val['CulpritID'];
                     $suslname = $val['LastName'];
                     $susfname = $val['FirstName'];
@@ -42,14 +75,14 @@
                 $stmt2->execute();
                 
                 // find culprit id
-                $select = "SELECT * FROM `culprit` ORDER BY CulpritID DESC LIMIT 1";
-                $result = $conn -> query($select); 
+                $selectculp = "SELECT * FROM `culprit` ORDER BY CulpritID DESC LIMIT 1";
+                $resultculp = $conn -> query($selectculp); 
                 
-                if($row_count = mysqli_num_rows($result) > 0) {
+                if($row_count = mysqli_num_rows($resultculp) > 0) {
                 // if row exist, add offense
                     $offCount = $row_count;
                     // get culprit values
-                    foreach($result as $val) {
+                    foreach($resultculp as $val) {
                         $culpritId = $val['CulpritID'];
                         $suslname = $val['LastName'];
                         $susfname = $val['FirstName'];
@@ -66,9 +99,9 @@
                 $imgContent = $_FILES["picture"]["name"];
             }
 
-            $stmt3 = $conn->prepare("INSERT into `report` (`Date`, `CulpritID`, `Details`, `OffenseCount`, `Status`, `ImageFile`) 
-                            values(?, ?, ?, ?, ?, ?)");
-            $stmt3->bind_param("sisiss", $whendate, $culpritId, $details, $offCount, $Status, $imgContent);
+            $stmt3 = $conn->prepare("INSERT into `report` (`Date`, `CitizenID`, `CulpritID`, `Details`, `OffenseCount`, `Status`, `ImageFile`) 
+                            values(?, ?, ?, ?, ?, ?, ?)");
+            $stmt3->bind_param("siisiss", $whendate, $citizenId, $culpritId, $details, $offCount, $Status, $imgContent);
             $stmt3->execute();
 
             if($stmt3){ 
