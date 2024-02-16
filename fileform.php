@@ -35,7 +35,10 @@
                         <input type="text" id="FirstName" name="FirstName" placeholder="First name" class="inputname" required>
                         <input type="text" id="LastName" name="LastName" placeholder="Last name" class="inputname" required>
 
-                        <br>
+                        <div class="form-row">
+                            <label for="phone" class="space col-form-label"><b>Contact No.:</b></label>
+                            <input type="tel" id="phone" name="phone" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" placeholder="0000-000-0000" class="inputname" required>
+                        </div>
 
                         <label for="subject" class="space col-form-label"><b>Subject</b>(Paksa)<b>:</b></label>
                         <input type="text" name="subject" value="Plastic Burning Incident Report" readonly class="mainsub">
