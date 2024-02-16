@@ -40,7 +40,8 @@
                     $selectcit = "SELECT * FROM `citizen` ORDER BY CitizenID DESC LIMIT 1";
                     $resultcit = $conn -> query($selectcit); 
                     
-                    if($rep_count = mysqli_num_rows($resultcit) > 0) {
+                    $row_count = $resultcit->num_rows;
+                    if($row_count > 0) {
                     // if row exist, add offense
                         $repCount = $rep_count;
                         // get culprit values
@@ -54,18 +55,21 @@
                 }
 
             // find Culprit ID
-            $selectculp = "SELECT * FROM `culprit` WHERE LastName='$suslname' AND FirstName='$susfname' AND Address='$place'";
+            $selectculp = "SELECT  culprit.culpritid AS susID, culprit.firstname AS culpritFN, culprit.lastname as culpritLN, culprit.address 
+            FROM `report` LEFT JOIN culprit ON report.CulpritID = culprit.CulpritID
+            WHERE culprit.LastName='$suslname' AND culprit.FirstName='$susfname' AND culprit.Address='$place'";
             $resultculp = $conn -> query($selectculp);
-            
-            if($row_count = mysqli_num_rows($resultculp) > 0) {
+
+            $row_count = $resultculp->num_rows; // get row count
+            if( $row_count> 0) {
             // if row exist, add offense
                 $offCount = $row_count + 1;
                 // get culprit values
                 foreach($resultculp as $val) {
-                    $culpritId = $val['CulpritID'];
-                    $suslname = $val['LastName'];
-                    $susfname = $val['FirstName'];
-                    $place = $val['Address'];
+                    $culpritId = $val['susID'];
+                    $suslname = $val['culpritLN'];
+                    $susfname = $val['culpritFN'];
+                    $place = $val['address'];
                 }
             }
             else {
@@ -78,7 +82,7 @@
                 $selectculp = "SELECT * FROM `culprit` ORDER BY CulpritID DESC LIMIT 1";
                 $resultculp = $conn -> query($selectculp); 
                 
-                if($row_count = mysqli_num_rows($resultculp) > 0) {
+                if($row_count = $resultculp->num_rows > 0) {
                 // if row exist, add offense
                     $offCount = $row_count;
                     // get culprit values
@@ -105,11 +109,11 @@
             $stmt3->execute();
 
             if($stmt3){ 
-                move_uploaded_file($_FILES["picture"]["tmp_name"], "../upload_pictures/$imgContent");
-                echo "<script>alert('Report Submitted')</script>";
+                move_uploaded_file($_FILES["picture"]["tmp_name"], "upload_pictures/$imgContent");
+                echo "<script>alert('Report Submitted'); window.location.href='cindex.php';</script>";
             }
             else{ 
-                echo "<script>alert('Report Failed to Upload')</script>";
+                echo "<script>alert('Report Failed to Upload'); window.location.href='cindex.php';</script>";
             }  
 
             $stmt->close();

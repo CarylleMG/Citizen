@@ -25,14 +25,18 @@
     background-position: center;
 }
 
+.banner br{
+    margin-top: 100%;
+}
+
 .BarangayLogo{
     width: 400px;
     cursor: default;
 }
 
 .border{
-    width: 750px;
-    height: 400px;
+    width: 650px;
+    height: 300px;
     padding: 10px;
     margin: auto;
     margin-top: 30px;
@@ -138,9 +142,8 @@ button:hover{
 
 .content2{
     width: 100%;
-    margin-top: 5%;
+    margin-top: 50%;
     font-size: 130%;
-    position: absolute;
     text-align: center;
     color:#294941;
 }
@@ -277,18 +280,6 @@ button:hover{
     background-color: #d6edd7; 
     cursor: pointer; 
 }
-
-.no-arrow {
-    -moz-appearance: textfield;
-  }
-.no-arrow::-webkit-inner-spin-button {
-    display: none;
-  }
-.no-arrow::-webkit-outer-spin-button,
-.no-arrow::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
 
 .space{
     font-size: large;
