@@ -1,0 +1,311 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    /* background: #000 !important;
+    color: rgb(76, 255, 76) !important;
+    outline: solid #f00 1px !important; */
+}
+
+.backgroundmain{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background: #a2bdb7;
+    background: linear-gradient(to bottom, #fff, #e8f1e7, #c3d9ce);
+    background-size: cover;
+    overflow-y: scroll;
+}
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    background-image:url(images/HomeBG2.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.BarangayLogo{
+    width: 400px;
+    cursor: default;
+}
+
+.border{
+    width: 750px;
+    height: 400px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 30px;
+    text-align: left;
+    background-color: #fff;
+    border: 2px solid #32524b;
+}
+
+.border h2{
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+.border p{
+    font-size: medium;
+    margin-left: 40px;
+}
+
+.border button{
+    font-size: medium;
+    margin-left: 40px;
+}
+
+.border2{
+    width: 750px;
+    height: 450px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 20px;
+    text-align: left;
+    background-color: #fff;
+    border: 2px solid #32524b;
+}
+
+.border2 p{
+    margin-top: 10px;
+}
+
+.borderform{
+    width: 70%;
+    height: auto;
+    padding: 10px;
+    margin: auto;
+    margin-top: 20px;
+    text-align: left;
+    background-color: #fff;
+    border: 3px solid #316e60;
+    border-radius: 5px;
+}
+
+.borderform p{
+    font-size: medium;
+}
+
+button{
+    margin-top: 20px;
+    width: 130px;
+    padding: 8px 0;
+    text-align: center;
+    color: #d6edd7;
+    font-weight: 600;
+    background-color: #243e38;
+}
+button:hover{
+    background-color: rgb(195, 226, 195);
+    color: #243e38;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cbback{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+}
+
+.cbback h5 a{
+    color: rgb(27, 29, 28);
+}
+
+.cbback h5 a:hover{
+    color: rgb(55, 61, 145);
+}
+
+.content{
+    margin: auto;
+    margin-left: 15%;
+    transform: translateY(30%);
+    position: absolute;
+    text-align: left;
+    color:#243e38;
+}
+.content h1{
+    font-size: 30px;
+    font-weight: bolder;
+}
+.content p{
+    margin-top: 20px;
+    font-weight: 100;
+}
+
+.content2{
+    width: 100%;
+    margin-top: 5%;
+    font-size: 130%;
+    position: absolute;
+    text-align: center;
+    color:#294941;
+}
+
+.content3{
+    width: 100%;
+    margin-top: 2%;
+    font-size: 130%;
+    position: absolute;
+    text-align: center;
+    color:#294941;
+}
+
+.content4{
+    width: 100%;
+    margin-top: 2%;
+    font-size: 120%;
+    position: absolute;
+    text-align: center;
+    color:#294941;
+}
+
+.content4 h2{
+    font-size: 120%;
+}
+
+.form{
+    margin-top: 5px;
+    font-size: medium;
+}
+
+.form p{
+    margin-top: 25px;
+}
+
+.form hr{
+    height: 3px;
+    background-color: #32524b;
+}
+
+.highlight{
+    height: 100px;
+    background: linear-gradient(to left, #eef1f6, #d7ece0) 0 25% / 100% no-repeat;
+}
+
+.imagebtn{
+    width: 300px;
+    height: 25px;
+    background-color: transparent;
+    margin-top: 3px;
+    color: #285c50;
+    font-size: 15px;
+    border: 3px solid #316e60;
+    border-radius: 5px;
+    border-width: 2px;
+}
+
+/*.imageform{
+    width: 750px;
+    height: 150px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 30px;
+    text-align: left;
+    background-color: transparent;
+    border: 3px solid #316e60;
+    border-radius: 5px;
+}*/
+
+.inputname{
+    width: 30%;
+    height: 25px;
+    font-size: 15px;
+}
+
+.inputline{
+    width: 25%;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #243e38;
+    text-align: center;
+    font-weight: bold;
+}
+
+.Logo{
+    width: 270px;
+    margin-left: 1%;
+    cursor: default;
+}
+
+.mainsub{
+    width: 55%;
+    max-width: 100%;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #243e38;
+    text-align: center;
+    font-size: 2vmin;
+    font-weight: bold;
+}
+
+.myMargin {
+    margin: 1rem;
+}
+
+.navbar{
+    width: 100%;
+    margin: auto;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #A8C6A3;
+}
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    font-weight: bold;
+    font-size: 3vmin;
+}
+.navbar ul li a{
+    content: '';
+    padding: 20px 10;
+    text-decoration: none;
+    color: #34574f;
+    text-transform: uppercase;
+    transition: 0.6s;
+    position: relative;
+    border-radius: 10%; 
+}
+.navbar ul li a:hover, .navbar ul li a:focus{  
+    background-color: #d6edd7; 
+    cursor: pointer; 
+}
+
+.space{
+    font-size: large;
+    color: #285c50;
+}
+
+.submitbtn{
+    display: block;
+    width: 100px;
+    height: 40px;
+    margin: 0 auto;
+    font-weight: bold;
+    text-align: center;
+    background-color: #294941;
+    color: #d6edd7;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+textarea{
+    margin-top: 5px;
+    resize: none;
+    font-size: 15px;
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: #243e38;
+}
+
+.ticketinput{
+    margin-top: 20px;
+    margin-left: 40px;
+}
