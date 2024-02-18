@@ -7,6 +7,15 @@
     outline: solid #f00 1px !important; */
 }
 
+.about-col{
+	flex-basis: 48%;
+	padding: 30px 2px;
+}
+
+.about-col img{
+	width: 100%;
+}
+
 .backgroundmain{
     width: 100vw;
     height: 100vh;
@@ -23,10 +32,6 @@
     background-image:url(images/HomeBG2.png);
     background-size: cover;
     background-position: center;
-}
-
-.banner br{
-    margin-top: 100%;
 }
 
 .BarangayLogo{
@@ -141,8 +146,9 @@ button:hover{
 }
 
 .content2{
+    position: absolute;
     width: 100%;
-    margin-top: 50%;
+    margin-top: 10%;
     font-size: 130%;
     text-align: center;
     color:#294941;

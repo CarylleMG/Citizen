@@ -22,18 +22,25 @@
                     </div>
                     <br>
                 </div>
-                <br>
-                <div class="content2" id="tix">
-                    <p>Already filed a complaint? Check your status now.</p>
-                    <div class = "border">
-                        <h2>Ticket Status</h2>
-                        <p>Input your ticket number.</p>
-                        <div class="ticketinput">
-                            <input type="number" id="ticket" name="ticket" placeholder="Ticket number">
+            </div>
+            <div class="content2">
+                <p>Already filed a complaint? Check your status now.</p>
+                <div class = "border">
+                    <div class="row">
+                        <div class="about-col">
+                            <h2>Ticket Status</h2>
+                            <p>Input your ticket number.</p>
+                            <div class="ticketinput">
+                                <input type="number" id="ticket" name="ticket" placeholder="Ticket number" required>
+                            </div>
+                            <button type="button" onclick="document.location='ticket.php'">Search</button>
                         </div>
-                        <button type="button">Search</button>
+                        <div class="about-col">
+                            <img src="images/ticketclaim_pic.png">
+                        </div>
                     </div>
                 </div>
+                <br><br>
             </div>
         </div>
     </body>
