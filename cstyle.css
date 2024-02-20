@@ -13,7 +13,7 @@
 }
 
 .about-col img{
-	width: 100%;
+	width: 50%;
 }
 
 .backgroundmain{
@@ -40,29 +40,35 @@
 }
 
 .border{
-    width: 650px;
-    height: 300px;
+    position: relative;
+    width: 400px;
+    height: 230px;
     padding: 10px;
     margin: auto;
     margin-top: 30px;
     text-align: left;
     background-color: #fff;
     border: 2px solid #32524b;
+    flex-direction: column;
+    display: flex;
+	justify-content: space-between;
 }
 
 .border h2{
-    margin-top: 50px;
-    margin-left: 40px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .border p{
     font-size: medium;
-    margin-left: 40px;
+    text-align: center;
 }
 
 .border button{
     font-size: medium;
-    margin-left: 40px;
+    text-align: center;
+    border-radius: 3px;
+    vertical-align: middle;
 }
 
 .border2{
@@ -148,7 +154,7 @@ button:hover{
 .content2{
     position: absolute;
     width: 100%;
-    margin-top: 10%;
+    margin-top: 5%;
     font-size: 130%;
     text-align: center;
     color:#294941;
@@ -287,6 +293,12 @@ button:hover{
     cursor: pointer; 
 }
 
+/*.row{
+    flex-direction: column;
+    display: flex;
+	justify-content: space-between;
+}*/
+
 .space{
     font-size: large;
     color: #285c50;
@@ -315,6 +327,8 @@ textarea{
 }
 
 .ticketinput{
-    margin-top: 20px;
-    margin-left: 40px;
+    width: 40%;
+    margin-top: 10px;
+    align-items: center;
+    vertical-align: middle;
 }

@@ -23,25 +23,18 @@
                     <br>
                 </div>
             </div>
-            <div class="content2">
+            <section class="content2">
                 <p>Already filed a complaint? Check your status now.</p>
                 <div class = "border">
-                    <div class="row">
-                        <div class="about-col">
-                            <h2>Ticket Status</h2>
-                            <p>Input your ticket number.</p>
-                            <div class="ticketinput">
-                                <input type="number" id="ticket" name="ticket" placeholder="Ticket number" required>
-                            </div>
-                            <button type="button" onclick="document.location='ticket.php'">Search</button>
-                        </div>
-                        <div class="about-col">
-                            <img src="images/ticketclaim_pic.png">
-                        </div>
-                    </div>
+                    <h2>Ticket Status</h2>
+                    <p>Input your ticket number</p>
+                    <br>
+                    <input type="number" id="ticket" name="ticket" placeholder="Ticket number" class="ticketinput" required>
+                    
+                    <button type="button" onclick="document.location='ticket.php'">Search</button>
                 </div>
                 <br><br>
-            </div>
+            </section>
         </div>
     </body>
 </html>
