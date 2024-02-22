@@ -6,10 +6,10 @@ define('DB_PASSWORD', '');
 define('DB_NAME', 'plasticdb');
 
 //get connection
-$mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+$conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-if(!$mysqli){
-  die("Connection failed: " . $mysqli->error);
+if(!$conn){
+  die("Connection failed: " . $conn->error);
 }
 
 /*

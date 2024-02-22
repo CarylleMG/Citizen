@@ -20,7 +20,7 @@
                 <h2>File A Report</h2>
                 <div class = "borderform">
                     <img src="images/BarangayLogo.png" class="BarangayLogo img-fluid">
-                    <form action="upload.php" method="post" enctype="multipart/form-data" class="form">
+                    <form action="api/upload.php" method="post" enctype="multipart/form-data" class="form">
                         <!--<div class="form-row">    
                             <label for="date" class="space col-form-label"><b>Date</b>(Petsa)<b>:</b></label>
                             <input type="date" id="date" name="date" value="<?php echo date("Y-m-d"); ?>" class="inputline" readonly> 
@@ -37,7 +37,7 @@
 
                         <div class="form-row">
                             <label for="phone" class="space col-form-label"><b>Contact No.:</b></label>
-                            <input type="tel" id="phone" name="phone" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" placeholder="0000-000-0000" class="inputname" required>
+                            <input type="tel" id="phone" name="phone" pattern="09[0-9]{9}" maxlength="11" placeholder="09xxxxxxxxx" class="inputname" required>
                         </div>
 
                         <label for="subject" class="space col-form-label"><b>Subject</b>(Paksa)<b>:</b></label>
@@ -63,21 +63,8 @@
                         
                         <div class="form-row">
                             <label for="details" class="space col-form-label"><b>Details</b>(Detalye)<b>:</b></label>
-                            <textarea class="form-control" name="details" id="details" placeholder="Write the details" cols="90" rows="10"></textarea>
+                            <textarea class="form-control" name="details" id="details" placeholder="Write the details" cols="90" rows="10" required></textarea>
                         </div>
-
-                        <!--<div class="space col-md">
-                            <label for="details" class="space col-form-label"><b>Is the accused cooperative?</b></label>
-                            <div class="col-md">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="radio" id="radio1" value="Cooperative">
-                                    <label class="form-check-label" for="radio1">Yes</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="radio" id="radio2" value="Uncooperative">
-                                    <label class="form-check-label" for="radio2">No</label>
-							    </div>
-						</div>-->
                         
                         <div class="form-group row">
                             <label for="picture" class="space col-form-label"><b>Upload Image Evidence</b></label>
@@ -86,14 +73,6 @@
                             </div>
 								<img id="output"/>
                         </div>
-
-
-                        <!--<div class="space form-row">
-                            <label for="sanction" class="col-md-3 col-form-label"><b>Sanction</b></label>
-                            <div class="col-md">
-                                <input type="text" class="form-control" name="sanction" id="sanction" placeholder="Write sanction">
-                            </div>
-                        </div>-->
 
                         <div class="form-row">
                             <br>
@@ -107,6 +86,7 @@
         </div>
         <!-- javascript -->
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="jscit/date.js"></script>
         <script>
             var loadFile = function(event){
                 var output = document.getElementById('output');
