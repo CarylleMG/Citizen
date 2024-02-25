@@ -26,12 +26,13 @@
             <section class="content2">
                 <p>Already filed a complaint? Check your status now.</p>
                 <div class = "border">
-                    <h2>Ticket Status</h2>
-                    <p>Input your ticket number</p>
-                    <br>
-                    <input type="number" id="ticket" name="ticket" placeholder="Ticket number" class="ticketinput" required>
-                    
-                    <button type="button" onclick="document.location='ticket.php'">Search</button>
+                    <form action="ticket.php" method="post">
+                        <h2>Ticket Status</h2>
+                        <p>Input your ticket number</p>
+                        <br>
+                        <input type="number" id="ticketnum" name="ticketnum" placeholder="Ticket number" value="<?=$ticketnum?>" class="ticketinput" required>
+                        <button type="button" onclick="document.location='ticket.php'">Search</button>
+                    </form>
                 </div>
                 <br><br>
             </section>
