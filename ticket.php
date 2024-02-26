@@ -58,7 +58,7 @@ if(isset($_POST['search'])){
 
 	} else { // otherwise, display citizen report
 		$firstnameVal = $citiFN;  
-		$lastnameVal = $userLN;
+		$lastnameVal = $citiLN;
         $contactVal = $contact;
 	}
 }
@@ -134,7 +134,7 @@ if(isset($_POST['search'])){
                         <hr>
                         <div class="space form-group row">
                             <label for="when" class="col-md-3 col-form-label"><b>When</b>(Kailan)<b>:</b></label>
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                                 <input type="date" value="<?=$date?>" class="form-control" name="when" id="when" placeholder="MM/dd/yyyy" readonly>
                             </div>
                         </div>
@@ -164,7 +164,7 @@ if(isset($_POST['search'])){
                                 </textarea>
                             </div>
                         </div>
-
+                        <br>
                         <div class="space form-group row">
                             <label for="details" class="col-md-3 col-form-label"><b>Is the accused cooperative?</b></label>
                             <div class="col-md">
@@ -186,10 +186,11 @@ if(isset($_POST['search'])){
                                     <?php echo "<img src='upload_pictures/".$picture."' class='form-control'>";   ?>
                                 </div>
                         </div>
+                        <br>
                         <div class="space form-group row">
                             <label for="sanction" class="col-md-3 col-form-label"><b>Sanction</b></label>
-                            <div class="col-md">
-                            <input type="text" value="<?=$sanction?>" class="form-control" name="sanction" id="sanction" placeholder="Write sanction" readonly>
+                            <div class="col-md-3">
+                            <input type="text" value="<?=$sanction?>" class="form-control" name="sanction" id="sanction" placeholder="Pending..." readonly>
                             </div>
                         </div>
                         </form>

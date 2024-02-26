@@ -114,7 +114,7 @@
             }
 
             if ($stmt3) {
-                move_uploaded_file($_FILES["picture"]["tmp_name"], "upload_pictures/$imgContent");
+                move_uploaded_file($_FILES["picture"]["tmp_name"], "../upload_pictures/$imgContent");
                 echo "<script>alert('Report Submitted. Your ticket number is $ticketno'); window.location.href='../cindex.php';</script>";
             } else {
                 echo "<script>alert('Report Failed to Upload'); window.location.href='../cindex.php';</script>";
