@@ -1,40 +1,48 @@
 <?php require_once('api/connect.php');
 
-	$ticketnum = $_GET['ticketnum']; 
+if(isset($_POST['search'])){
+	$ticketnum = $_POST['ticketnum']; 
 
-	$TicketForm = "SELECT report.*, 
+	$query = "SELECT report.*, 
+	user.LastName AS userLN, user.FirstName as userFN,
 	citizen.LastName AS citiLN, citizen.FirstName AS citiFN,
 	culprit.firstname AS culpritFN, culprit.lastname as culpritLN, culprit.address FROM report 
+	LEFT JOIN user ON report.UserID = user.UserID
+	LEFT JOIN culprit ON report.CulpritID = culprit.CulpritID
+	LEFT JOIN citizen ON report.CitizenID = citizen.CitizenID
 	WHERE TicketNum='$ticketnum'";
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            // Process each row of data
-            // $row contains the data from the database
-        }
-    } else {
-        echo "Ticket Number Invalid.";
-    }
+    $result = $conn -> query($query);
 
-	/*$res2 = $mysqli -> query($TicketForm); 
-	if(mysqli_num_rows($res2) > 0) {
-		foreach($res2 as $val) {
-			// report table 
-			$whendate = $val['Date'];
+    if ($result->num_rows > 0) {
+        while ($val = $result->fetch_assoc()) {
+            // report table 
+			$date = $val['Date'];
 			$details = $val['Details'];
+			//$offCount = $val['OffenseCount'];
+			$behavior = $val['Behavior'];
+			$sanction = $val['Sanction'];
+			$status = $val['Status'];
 			$picture = $val['ImageFile'];
 
 			// citizen info
-			$LastName = $val['citiLN']; 
-			$FirstName = $val['citiFN']; 
+			$citizenId = $val['CitizenID']; 
+			$citiLN = $val['citiLN']; 
+			$citiFN = $val['citiFN']; 
 
+			// user info
+			$userId = $val['UserID'];
+			$userLN = $val['userLN'];
+			$userFN = $val['userFN'];
 			
 			// culprit info
-			$susfname = $val['culpritFN'];
-			$suslname = $val['culpritLN'];
-			$place = $val['address'];
-		}
-	}
+			$culpritId = $val['CulpritID'];
+			$culpritFN = $val['culpritFN'];
+			$culpritLN = $val['culpritLN'];
+			$address = $val['address'];
+        }
+    } 
+
 
 	// from database
 	// May subject to change
@@ -47,8 +55,9 @@
 	}
 
     if($ticketnum == NULL) {
-        echo "<script>alert('Ticket Number Invalid.')</script>";
-    }*/
+        echo "<script>alert('Ticket Number Invalid.');  window.location.href='cindex.php';</script>";
+    }
+}
 ?>
 
 <html>
@@ -70,63 +79,117 @@
             <div class="content4">
                 <p>Report Details</p>
                 <div class = "borderform">
-                <img src="images/BarangayLogo.png" class="BarangayLogo img-fluid">
-                    <form action="upload.php" method="post" enctype="multipart/form-data" class="form">
-                        <!--<div class="form-row">    
-                            <label for="date" class="space col-form-label"><b>Date</b>(Petsa)<b>:</b></label>
-                            <input type="date" id="date" name="date" value="<?php echo date("Y-m-d"); ?>" class="inputline" readonly> 
-                        </div>-->
-
-                        <div class="form-row">
-                            <label for="forwho" class="space col-form-label"><b>For/To</b>(Para sa/kay)<b>:</b></label>
-                            <input type="text" id="forwho" name="forwho" value="Hon. Walfredo R. Dimaguila Jr." class="mainsub" readonly>
-                        </div>    
-                        
-                        <label for="FirstName" class="space col-form-label"><b>From</b>(Mula sa/kay)<b>:</b></label>
-                        <input type="text" id="FirstName" name="FirstName" value="<?=$FirstName?>" class="inputname" readonly>
-                        <input type="text" id="LastName" name="LastName" value="<?=$LastName?>" class="inputname" readonly>
-
-                        <div class="form-row">
-                            <label for="phone" class="space col-form-label"><b>Contact No.:</b></label>
-                            <input type="tel" id="phone" name="phone" value="<?=$phone?>" class="inputname" readonly>
-                        </div>
-
-                        <label for="subject" class="space col-form-label"><b>Subject</b>(Paksa)<b>:</b></label>
-                        <input type="text" name="subject" value="Plastic Burning Incident Report" readonly class="mainsub">
-                            
-                        <hr>
-
-                        <div class="form-row">
-                            <label for="when" class="space col-form-label"><b>When</b>(Kailan)<b>:</b></label>
-                            <input type="date" id="whendate" name="whendate" value="<?=$whendate?>" readonly>
-                        </div>
-
-                        <div class="form-row">
-                            <label for="place" class="space col-form-label"><b>Where</b>(Saan)<b>:</b></label>
-                            <input type="text" class="form-control" name="place" id="place" value="<?=$place?>" readonly>
-                        </div>
-
-                        <div class="form-row">
-                            <label for="susfname" class="space col-form-label"><b>Who</b>(Sino)<b>:</b></label>
-                            <input type="text" id="susfname" name="susfname" value="<?=$susfname?>" class="inputname" readonly>
-                            <input type="text" id="suslname" name="suslname" value="<?=$suslname?>" class="inputname" readonly>
-                        </div>
-                        
-                        <div class="form-row">
-                            <label for="details" class="space col-form-label"><b>Details</b>(Detalye)<b>:</b></label>
-                            <textarea class="form-control" name="details" id="details" value="<?=$details?>" cols="90" rows="10" readonly></textarea>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="picture" class="space col-form-label"><b>Upload Image Evidence</b></label>
-                            <div class="col-md">
-								<input type="file" name="picture" id="picture" accept="image/*" onchange="loadFile(event)" class="form-control" value="<?=$picture?>" readonly>
+                    <img src="images/BarangayLogo.png" class="BarangayLogo img-fluid">
+                    <form action="api/report-crud.php" method="post" enctype="multipart/form-data" class="form">
+                    <div class="space form-group row">    
+                            <label for="date" class="col-md-3 col-form-label"><b>Ticket No. <?= $ticketnum ?></b></label>
+                            <div class="col-md-5">
+                                <select name="selectStat" class="form-select"><p>Status</p>
+                                    <option value="Closed" <?php if($status=="Closed") echo 'selected="selected"'; ?> >Closed</options>
+                                    <option value="Unacknowledged" <?php if($status=="Unacknowledged") echo 'selected="selected"'; ?> >Unacknowledged</options>
+                                    <option value="In-progress" <?php if($status=="In-progress") echo 'selected="selected"'; ?> >In-progress</options>
+                                    <!-- hide cenro status unless stated -->
+                                    <?php if($status=="Forwarded to CENRO") { ?> 
+                                    <option value="Forwarded to CENRO" <?php if($status=="Forwarded to CENRO") echo 'selected="selected"'; ?> >Forwarded to CENRO</options>
+                                    <?php } ?>
+                                </select>
                             </div>
-								<img id="output"/>
                         </div>
-                    </form>
+
+                        <!-- All primary key and foreign key in hidden input types -->
+                        <input type="hidden" name="ticket" id="ticket" value="<?=$ticketnum?>">
+                        <input type="hidden" name="userId" id="userId" value="<?=$userId?>">
+                        <input type="hidden" name="cId" id="cId" value="<?=$citizenId?>">
+                        <input type="hidden" name="culpritId" id="culpritId" value="<?=$culpritId?>">
+                        <input type="hidden" name="picture" id="picture" value="<?=$picture ?>">
+                            
+                        <div class="space form-group row">
+                            <label for="forwho" class="col-md-3 col-form-label"><b>For/To</b>(Para sa/kay)<b>:</b></label>
+                            <div class="col-md">
+                                <input type="text" class="form-control" value="Hon. Walfredo R. Dimaguila Jr." id="forwho" name="forwho" readonly>
+                            </div>
+                        </div>
+
+                        <div class="space form-group row">
+                            <label for="lname" class="col-md-3 col-form-label"><b>From</b>(Mula sa/kay)<b>:</b></label>
+                            <div class="col-md">
+                                <input type="text" class="form-control" value="<?=$firstnameVal?>" id="fname" name="fname" readonly>
+                            </div>
+                            <div class="col-md">
+                                <input type="text" class="form-control" value="<?=$lastnameVal?>" id="lname" name="lname" readonly>
+                            </div>
+                        </div>
+
+                        <div class="space form-group row">
+                            <label for="subject" class="col-md-3 col-form-label"><b>Subject</b>(Paksa)<b>:</b></label>
+                            <div class="col-md">
+                                <input type="text" class="form-control" name="subject" id="subject" value="Plastic Burning Incident Report" readonly>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="space form-group row">
+                            <label for="when" class="col-md-3 col-form-label"><b>When</b>(Kailan)<b>:</b></label>
+                            <div class="col-md-5">
+                                <input type="date" value="<?=$date?>" class="form-control" name="when" id="when" placeholder="MM/dd/yyyy">
+                            </div>
+                        </div>
+
+                        <div class="space form-group row">
+                            <label for="place" class="col-md-3 col-form-label"><b>Where</b>(Saan)<b>:</b></label>
+                            <div class="col-md">
+                            <input type="text" value="<?=$address?>" class="form-control" name="place" id="place" placeholder="Write address">
+                            </div>
+                        </div>
+
+                        <div class="space form-group row">
+                            <label for="susfname" class="col-md-3 col-form-label"><b>Who</b>(Sino)<b>:</b></label>
+                            <div class="col-md">
+                                <input type="text" value="<?=$culpritFN?>" class="form-control" id="susfname" name="susfname" placeholder="First name">
+                            </div>
+                            <div class="col-md">
+                                <input type="text" value="<?=$culpritLN?>" class="form-control" id="suslname" name="suslname" placeholder="Last name">
+                            </div>
+                        </div>
+
+                        <div class="space form-group row">
+                            <label for="details" class="col-md-3 col-form-label"><b>Details</b>(Detalye)<b>:</b></label>
+                            <div class="col-md">
+                                <textarea class="form-control" name="details" id="details" placeholder="Write the details" cols="90" rows="10">
+                                    <?=htmlspecialchars($details)?>
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div class="space form-group row">
+                            <label for="details" class="col-md-3 col-form-label"><b>Is the accused cooperative?</b></label>
+                            <div class="col-md">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio" id="radio1" value="Cooperative" <?php if($behavior=="Cooperative") echo 'checked'; ?>>
+                                    <label class="form-check-label" for="radio1">Yes</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio" id="radio2" value="Uncooperative" <?php if($behavior=="Uncooperative") echo 'checked'; ?>>
+                                    <label class="form-check-label" for="radio2">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space form-group row">
+                                <label for="picture" class="col-md-3 col-form-label"><b>Image Evidence</b></label>
+                                <div class="col-md">
+                                    <?php echo "<img src='../upload_pictures/".$picture."' class='form-control'>";   ?>
+                                </div>
+                        </div>
+                        <div class="space form-group row">
+                            <label for="sanction" class="col-md-3 col-form-label"><b>Sanction</b></label>
+                            <div class="col-md">
+                            <input type="text" value="<?=$sanction?>" class="form-control" name="sanction" id="sanction" placeholder="Write sanction" required>
+                            </div>
+                        </div>
+                        </form>
                 </div>
-                <br><br>
             </div>
         </div>
         <!-- javascript -->

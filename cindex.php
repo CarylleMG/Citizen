@@ -1,3 +1,5 @@
+<?php require_once('api/connect.php'); ?>
+
 <html>
     <head>
         <title>Citizen Page</title>
@@ -26,12 +28,12 @@
             <section class="content2">
                 <p>Already filed a complaint? Check your status now.</p>
                 <div class = "border">
-                    <form action="ticket.php" method="post">
+                    <form action="ticket.php" method="post" enctype="multipart/form-data">
                         <h2>Ticket Status</h2>
                         <p>Input your ticket number</p>
                         <br>
-                        <input type="number" id="ticketnum" name="ticketnum" placeholder="Ticket number" value="<?=$ticketnum?>" class="ticketinput" required>
-                        <button type="button" onclick="document.location='ticket.php'">Search</button>
+                        <input type="number" id="ticketnum" name="ticketnum" placeholder="Ticket number" class="ticketinput" required>
+                        <button type="submit" name="search" id="search">Search</button>
                     </form>
                 </div>
                 <br><br>
