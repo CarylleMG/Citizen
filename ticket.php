@@ -5,7 +5,7 @@ if(isset($_POST['search'])){
 
 	$query = "SELECT report.*, 
 	user.LastName AS userLN, user.FirstName as userFN,
-	citizen.LastName AS citiLN, citizen.FirstName AS citiFN,
+	citizen.LastName AS citiLN, citizen.FirstName AS citiFN, citizen.Contact,
 	culprit.firstname AS culpritFN, culprit.lastname as culpritLN, culprit.address FROM report 
 	LEFT JOIN user ON report.UserID = user.UserID
 	LEFT JOIN culprit ON report.CulpritID = culprit.CulpritID
@@ -29,6 +29,7 @@ if(isset($_POST['search'])){
 			$citizenId = $val['CitizenID']; 
 			$citiLN = $val['citiLN']; 
 			$citiFN = $val['citiFN']; 
+            $contact = $val['Contact'];
 
 			// user info
 			$userId = $val['UserID'];
@@ -41,7 +42,11 @@ if(isset($_POST['search'])){
 			$culpritLN = $val['culpritLN'];
 			$address = $val['address'];
         }
-    } 
+    }
+    
+    else{
+        echo "<script>alert('Ticket Number Invalid.');  window.location.href='cindex.php';</script>";
+    }
 
 
 	// from database
@@ -49,14 +54,13 @@ if(isset($_POST['search'])){
 	if ($citizenId == NULL || $citizenId == 0) { // if there is no citizen report, display staff details
 		$firstnameVal = $userFN;
 		$lastnameVal = $userLN;
+        $contactVal = $contact;
+
 	} else { // otherwise, display citizen report
 		$firstnameVal = $citiFN;  
 		$lastnameVal = $userLN;
+        $contactVal = $contact;
 	}
-
-    if($ticketnum == NULL) {
-        echo "<script>alert('Ticket Number Invalid.');  window.location.href='cindex.php';</script>";
-    }
 }
 ?>
 
@@ -84,7 +88,7 @@ if(isset($_POST['search'])){
                     <div class="space form-group row">    
                             <label for="date" class="col-md-3 col-form-label"><b>Ticket No. <?= $ticketnum ?></b></label>
                             <div class="col-md-5">
-                                <select name="selectStat" class="form-select"><p>Status</p>
+                                <select name="selectStat" class="form-select" disabled><p>Status</p>
                                     <option value="Closed" <?php if($status=="Closed") echo 'selected="selected"'; ?> >Closed</options>
                                     <option value="Unacknowledged" <?php if($status=="Unacknowledged") echo 'selected="selected"'; ?> >Unacknowledged</options>
                                     <option value="In-progress" <?php if($status=="In-progress") echo 'selected="selected"'; ?> >In-progress</options>
@@ -95,13 +99,6 @@ if(isset($_POST['search'])){
                                 </select>
                             </div>
                         </div>
-
-                        <!-- All primary key and foreign key in hidden input types -->
-                        <input type="hidden" name="ticket" id="ticket" value="<?=$ticketnum?>">
-                        <input type="hidden" name="userId" id="userId" value="<?=$userId?>">
-                        <input type="hidden" name="cId" id="cId" value="<?=$citizenId?>">
-                        <input type="hidden" name="culpritId" id="culpritId" value="<?=$culpritId?>">
-                        <input type="hidden" name="picture" id="picture" value="<?=$picture ?>">
                             
                         <div class="space form-group row">
                             <label for="forwho" class="col-md-3 col-form-label"><b>For/To</b>(Para sa/kay)<b>:</b></label>
@@ -121,6 +118,13 @@ if(isset($_POST['search'])){
                         </div>
 
                         <div class="space form-group row">
+                            <label for="phone" class="col-md-3 col-form-label"><b>Contact No.:</b></label>
+                            <div class="col-md">
+                                <input type="tel" class="form-control" value="<?=$contact?>" id="phone" name="phone" pattern="09[0-9]{9}" maxlength="11" readonly>
+                            </div>
+                        </div>
+
+                        <div class="space form-group row">
                             <label for="subject" class="col-md-3 col-form-label"><b>Subject</b>(Paksa)<b>:</b></label>
                             <div class="col-md">
                                 <input type="text" class="form-control" name="subject" id="subject" value="Plastic Burning Incident Report" readonly>
@@ -131,31 +135,31 @@ if(isset($_POST['search'])){
                         <div class="space form-group row">
                             <label for="when" class="col-md-3 col-form-label"><b>When</b>(Kailan)<b>:</b></label>
                             <div class="col-md-5">
-                                <input type="date" value="<?=$date?>" class="form-control" name="when" id="when" placeholder="MM/dd/yyyy">
+                                <input type="date" value="<?=$date?>" class="form-control" name="when" id="when" placeholder="MM/dd/yyyy" readonly>
                             </div>
                         </div>
 
                         <div class="space form-group row">
                             <label for="place" class="col-md-3 col-form-label"><b>Where</b>(Saan)<b>:</b></label>
                             <div class="col-md">
-                            <input type="text" value="<?=$address?>" class="form-control" name="place" id="place" placeholder="Write address">
+                            <input type="text" value="<?=$address?>" class="form-control" name="place" id="place" placeholder="Write address" readonly>
                             </div>
                         </div>
 
                         <div class="space form-group row">
                             <label for="susfname" class="col-md-3 col-form-label"><b>Who</b>(Sino)<b>:</b></label>
                             <div class="col-md">
-                                <input type="text" value="<?=$culpritFN?>" class="form-control" id="susfname" name="susfname" placeholder="First name">
+                                <input type="text" value="<?=$culpritFN?>" class="form-control" id="susfname" name="susfname" placeholder="First name" readonly>
                             </div>
                             <div class="col-md">
-                                <input type="text" value="<?=$culpritLN?>" class="form-control" id="suslname" name="suslname" placeholder="Last name">
+                                <input type="text" value="<?=$culpritLN?>" class="form-control" id="suslname" name="suslname" placeholder="Last name" readonly>
                             </div>
                         </div>
 
                         <div class="space form-group row">
                             <label for="details" class="col-md-3 col-form-label"><b>Details</b>(Detalye)<b>:</b></label>
                             <div class="col-md">
-                                <textarea class="form-control" name="details" id="details" placeholder="Write the details" cols="90" rows="10">
+                                <textarea class="form-control" name="details" id="details" placeholder="Write the details" cols="90" rows="10" readonly>
                                     <?=htmlspecialchars($details)?>
                                 </textarea>
                             </div>
@@ -165,13 +169,13 @@ if(isset($_POST['search'])){
                             <label for="details" class="col-md-3 col-form-label"><b>Is the accused cooperative?</b></label>
                             <div class="col-md">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="radio" id="radio1" value="Cooperative" <?php if($behavior=="Cooperative") echo 'checked'; ?>>
+                                    <input class="form-check-input" type="radio" name="radio" id="radio1" value="Cooperative" disabled <?php if($behavior=="Cooperative") echo 'checked'; ?>>
                                     <label class="form-check-label" for="radio1">Yes</label>
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="radio" id="radio2" value="Uncooperative" <?php if($behavior=="Uncooperative") echo 'checked'; ?>>
+                                    <input class="form-check-input" type="radio" name="radio" id="radio2" value="Uncooperative" disabled <?php if($behavior=="Uncooperative") echo 'checked'; ?>>
                                     <label class="form-check-label" for="radio2">No</label>
                                 </div>
                             </div>
@@ -179,13 +183,13 @@ if(isset($_POST['search'])){
                         <div class="space form-group row">
                                 <label for="picture" class="col-md-3 col-form-label"><b>Image Evidence</b></label>
                                 <div class="col-md">
-                                    <?php echo "<img src='../upload_pictures/".$picture."' class='form-control'>";   ?>
+                                    <?php echo "<img src='upload_pictures/".$picture."' class='form-control'>";   ?>
                                 </div>
                         </div>
                         <div class="space form-group row">
                             <label for="sanction" class="col-md-3 col-form-label"><b>Sanction</b></label>
                             <div class="col-md">
-                            <input type="text" value="<?=$sanction?>" class="form-control" name="sanction" id="sanction" placeholder="Write sanction" required>
+                            <input type="text" value="<?=$sanction?>" class="form-control" name="sanction" id="sanction" placeholder="Write sanction" readonly>
                             </div>
                         </div>
                         </form>

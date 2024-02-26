@@ -33,6 +33,7 @@
                         <p>Input your ticket number</p>
                         <br>
                         <input type="number" id="ticketnum" name="ticketnum" placeholder="Ticket number" class="ticketinput" required>
+                        <br>
                         <button type="submit" name="search" id="search">Search</button>
                     </form>
                 </div>
