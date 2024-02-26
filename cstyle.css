@@ -329,6 +329,5 @@ textarea{
 .ticketinput{
     width: 40%;
     margin-top: 10px;
-    align-items: center;
-    vertical-align: middle;
+    border-radius: 3px;
 }
