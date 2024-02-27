@@ -303,6 +303,11 @@ button:hover{
     color: #285c50;
 }
 
+.spacemain{
+    font-size: 15px;
+    color: #285c50;
+}
+
 .submitbtn{
     display: block;
     width: 100px;

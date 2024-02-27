@@ -30,9 +30,15 @@
                 <div class = "border">
                     <form action="ticket.php" method="post" enctype="multipart/form-data">
                         <h2>Ticket Status</h2>
-                        <p>Input your ticket number</p>
-                        <input type="number" id="ticketnum" name="ticketnum" placeholder="Ticket number" class="ticketinput" required>
-                        <br>
+                        <p>Input your ticket number and contact number to verify your filed complaint.</p>
+                        <div class="form-row">
+                            <label for="ticketnum" class="spacemain">Ticket No.:</label>
+                            <input type="number" id="ticketnum" name="ticketnum" class="ticketinput" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="contact" class="spacemain">Contact No.:</label>
+                            <input type="tel" id="contact" name="contact" pattern="09[0-9]{9}" maxlength="11" placeholder=" 09xxxxxxxxx" class="ticketinput" required>
+                        </div>
                         <button type="submit" name="search" id="search">Search</button>
                     </form>
                 </div>
