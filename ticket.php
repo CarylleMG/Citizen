@@ -1,7 +1,9 @@
 <?php require_once('api/connect.php');
 
 if(isset($_POST['search'])){
+
 	$ticketnum = $_POST['ticketnum']; 
+    $contact = $_POST['contact'];
 
 	$query = "SELECT report.*, 
 	user.LastName AS userLN, user.FirstName as userFN,
@@ -10,7 +12,7 @@ if(isset($_POST['search'])){
 	LEFT JOIN user ON report.UserID = user.UserID
 	LEFT JOIN culprit ON report.CulpritID = culprit.CulpritID
 	LEFT JOIN citizen ON report.CitizenID = citizen.CitizenID
-	WHERE TicketNum='$ticketnum'";
+	WHERE TicketNum='$ticketnum' AND Contact='$contact'";
 
     $result = $conn -> query($query);
 
@@ -45,7 +47,7 @@ if(isset($_POST['search'])){
     }
     
     else{
-        echo "<script>alert('Ticket Number Invalid.');  window.location.href='cindex.php';</script>";
+        echo "<script>alert('Ticket Number or Contact Number Invalid.');  window.location.href='cindex.php';</script>";
     }
 
 
