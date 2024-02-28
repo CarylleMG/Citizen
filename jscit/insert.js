@@ -58,31 +58,15 @@ $('#submit').click(function(e){
 $('#search').click(function(e){
     e.preventDefault();
 
-    var formData = new FormData($('#reportForm')[0]);
+    var formData = new FormData($('#searchForm')[0]);
 
-    var FirstName = $('#FirstName').val();
-    var LastName = $('#LastName').val();
-    var phone = $('#phone').val();
-    var whendate = $('#whendate').val();
-    var place = $('#place').val();
-    var susfname = $('#susfname').val();
-    var suslname = $('#suslname').val();
-    var detailsValue = $('#details').val();
+    var ticketnum = $('#ticketnum').val();
+    var contact = $('#contact').val();
 
-    formData.append('submit', true);
-    formData.append('FirstName', FirstName);
-    formData.append('LastName', LastName);
-    formData.append('phone', phone);
-    formData.append('whendate', whendate);
-    formData.append('place', place);
-    formData.append('susfname', susfname);
-    formData.append('suslname', suslname);
-    formData.append('details', detailsValue);
+    formData.append('search', true);
+    formData.append('ticketnum', ticketnum);
+    formData.append('contact', contact);
     
-    // Append image file to FormData object
-    var inputFile = document.querySelector('input[type="file"]');
-    var imageFile = inputFile.files[0];
-    formData.append('picture', imageFile);
 
     $.ajax({
         type: 'POST',

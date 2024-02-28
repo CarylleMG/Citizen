@@ -20,7 +20,7 @@
                 <h2>File A Report</h2>
                 <div class = "borderform">
                     <img src="images/BarangayLogo.png" class="BarangayLogo img-fluid">
-                    <form action="" method="post" enctype="multipart/form-data" class="form">
+                    <form id="reportForm" action="" method="post" enctype="multipart/form-data" class="form">
                         <div class="form-row">
                             <label for="forwho" class="space col-form-label"><b>For/To</b>(Para sa/kay)<b>:</b></label>
                             <input type="text" id="forwho" name="forwho" value="Hon. Walfredo R. Dimaguila Jr." class="mainsub" readonly>

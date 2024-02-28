@@ -30,7 +30,7 @@
             <div class="content2">
                 <p>Already filed a complaint? Check your status now.</p>
                 <div class = "border">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form id="searchForm" action="" method="post" enctype="multipart/form-data">
                         <h2>Ticket Status</h2>
                         <p>Input your ticket number and contact number to verify your filed complaint.</p>
                         <div class="form-row">
