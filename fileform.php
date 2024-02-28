@@ -3,7 +3,7 @@
         <title>Citizen Page</title>
         <link rel="stylesheet" href="cstyle.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     </head>
 
     <body>
@@ -20,12 +20,7 @@
                 <h2>File A Report</h2>
                 <div class = "borderform">
                     <img src="images/BarangayLogo.png" class="BarangayLogo img-fluid">
-                    <form action="api/upload.php" method="post" enctype="multipart/form-data" class="form">
-                        <!--<div class="form-row">    
-                            <label for="date" class="space col-form-label"><b>Date</b>(Petsa)<b>:</b></label>
-                            <input type="date" id="date" name="date" value="<?php echo date("Y-m-d"); ?>" class="inputline" readonly> 
-                        </div>-->
-
+                    <form action="" method="post" enctype="multipart/form-data" class="form">
                         <div class="form-row">
                             <label for="forwho" class="space col-form-label"><b>For/To</b>(Para sa/kay)<b>:</b></label>
                             <input type="text" id="forwho" name="forwho" value="Hon. Walfredo R. Dimaguila Jr." class="mainsub" readonly>
@@ -76,7 +71,7 @@
 
                         <div class="form-row">
                             <br>
-                            <button type="submit" name="submit" id="submit" value="Submit" class="submitbtn">Submit</button>
+                            <button name="submit" id="submit" class="submitbtn">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -86,7 +81,10 @@
         </div>
         <!-- javascript -->
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
         <script src="jscit/date.js"></script>
+        <script src="jscit/insert.js"></script>
         <script>
             var loadFile = function(event){
                 var output = document.getElementById('output');
