@@ -48,6 +48,16 @@ if(isset($_POST['search'])){
     
     else{
         echo "<script>alert('Ticket Number or Contact Number Invalid.');  window.location.href='cindex.php';</script>";
+        /*echo '<script>
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Invalid Ticket Number or Contact Number",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    }).then(function() {
+                        window.location.href = "cindex.php"
+                    });
+                </script>';*/
     }
 
 
@@ -71,6 +81,9 @@ if(isset($_POST['search'])){
         <title>Citizen Page</title>
         <link rel="stylesheet" href="cstyle.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Include SweetAlert2 library -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     </head>
 
     <body>
@@ -202,8 +215,7 @@ if(isset($_POST['search'])){
         <!-- javascript -->
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="jscit/date.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="jscit/insert.js"></script>
+        <!--<script src="jscit/insert.js"></script>-->
         <script>
             var loadFile = function(event){
                 var output = document.getElementById('output');

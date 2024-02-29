@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="cstyle.css">
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
 
+        <!-- Include SweetAlert2 library -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     </head>
 
     <body>
