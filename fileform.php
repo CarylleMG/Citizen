@@ -19,7 +19,6 @@
             <div class="content4">
                 <h2><b>File A Report</b></h2>
                 <div class = "borderform">
-                <div id="errorMessageUpdate" class="alert alert-warning d-none"></div>
                     <img src="images/BarangayLogo.png" class="BarangayLogo img-fluid">
                     <form id="reportForm" action="" method="post" enctype="multipart/form-data" class="form">
                         <div class="form-row">
@@ -84,8 +83,9 @@
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="jscit/date.js"></script>
-        <script src="jscit/insert.js"></script>
+        <script src="jscit/insert_search.js"></script>
         <script>
             var loadFile = function(event){
                 var output = document.getElementById('output');

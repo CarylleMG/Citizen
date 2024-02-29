@@ -123,7 +123,7 @@ if (isset($_POST['submit'])) {
             //echo "<script>alert('Report Submitted. Your ticket number is $ticketno'); window.location.href='../cindex.php';</script>";
             $result = [
                 'status' => 200,
-                'message' => 'Report Submitted Successfully. Your ticket number is '.$ticketno
+                'message' => 'Your ticket number is '.$ticketno
                 ];
                 echo json_encode($result);
                 return;

@@ -45,21 +45,6 @@ if(isset($_POST['search'])){
 			$address = $val['address'];
         }
     }
-    
-    else{
-        echo "<script>alert('Ticket Number or Contact Number Invalid.');  window.location.href='cindex.php';</script>";
-        /*echo '<script>
-                    Swal.fire({
-                        title: "Error!",
-                        text: "Invalid Ticket Number or Contact Number",
-                        icon: "error",
-                        confirmButtonText: "OK"
-                    }).then(function() {
-                        window.location.href = "cindex.php"
-                    });
-                </script>';*/
-    }
-
 
 	// from database
 	// May subject to change
@@ -81,9 +66,6 @@ if(isset($_POST['search'])){
         <title>Citizen Page</title>
         <link rel="stylesheet" href="cstyle.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        
-        <!-- Include SweetAlert2 library -->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     </head>
 
     <body>
@@ -214,8 +196,10 @@ if(isset($_POST['search'])){
         </div>
         <!-- javascript -->
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="jscit/date.js"></script>
-        <!--<script src="jscit/insert.js"></script>-->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="jscit/insert_search.js"></script> 
         <script>
             var loadFile = function(event){
                 var output = document.getElementById('output');

@@ -31,27 +31,36 @@ $('#submit').click(function(e){
         type: 'POST',
         url: 'api/upload.php',
         data: formData,
-        contentType: false, // Don't set content type
-        processData: false, // Don't process data
+        contentType: false, 
+        processData: false, 
         success: function(response){
             console.log(response);
             var res = jQuery.parseJSON(response);
             if(res.status == 422) {
-                $('#errorMessageUpdate').removeClass('d-none');
-                $('#errorMessageUpdate').text(res.message);
+                swal({
+                    title: "Warning",
+                    text: res.message,
+                    icon: "warning",
+                    button: "OK"
+                });
             }
             else if(res.status == 200){
-                $('#errorMessageUpdate').addClass('d-none');
-                alertify.set('notifier','position', 'center');
-                alertify.success(res.message);
-
-                // Show alertify message for a brief moment
-                setTimeout(function() {
-                    window.location.href = 'cindex.php'; // redirect after success
-                }, 1500); // 1500 milliseconds delay (1.5 seconds)
+                swal({
+                    title: "Success!",
+                    text: res.message,
+                    icon: "success",
+                    button: "OK",
+                }).then(function() {
+                    window.location.href = "cindex.php";
+                });
             }
             else if(res.status == 500) {
-                alert(res.message);
+                swal({
+                    title: "Error!",
+                    text: res.message,
+                    icon: "error",
+                    button: "OK"
+                });
             }
         }, 
         error: function(xhr, status, error) {
@@ -62,41 +71,47 @@ $('#submit').click(function(e){
 
 $('#search').click(function(e){
     e.preventDefault();
-
+    
     var formData = new FormData($('#searchForm')[0]);
-
     var ticketnum = $('#ticketnum').val();
     var contact = $('#contact').val();
-
     formData.append('search', true);
     formData.append('ticketnum', ticketnum);
     formData.append('contact', contact);
-    
 
     $.ajax({
         type: 'POST',
-        url: 'api/upload.php',
+        url: 'api/validate.php',
         data: formData,
-        contentType: false, // Don't set content type
-        processData: false, // Don't process data
+        contentType: false, 
+        processData: false,
         success: function(response){
             console.log(response);
             var res = jQuery.parseJSON(response);
-            if(res.status == 422) {
-                $('#errorMessageUpdate').removeClass('d-none');
-                $('#errorMessageUpdate').text(res.message);
+            if(res.status == 422) { 
+                swal({
+                    title: "Warning",
+                    text: res.message,
+                    icon: "warning",
+                    button: "OK"
+                });
             }
-            else if(res.status == 200){
-                $('#errorMessageUpdate').addClass('d-none');
-                alertify.set('notifier','position', 'top-right');
-                alertify.success(res.message);
+            else if(res.status == 200){ 
+                
+                window.location.href = "ticket.php";
+                
             }
-            else if(res.status == 500) {
-                alert(res.message);
+            else if(res.status == 500) { 
+                swal({
+                    title: "Error!",
+                    text: res.message,
+                    icon: "error",
+                    button: "OK"
+                });
             }
         }, 
         error: function(xhr, status, error) {
             console.error(xhr.responseText); 
-        }
+        } 
     });
 });
