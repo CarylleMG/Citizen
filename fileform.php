@@ -19,6 +19,7 @@
             <div class="content4">
                 <h2><b>File A Report</b></h2>
                 <div class = "borderform">
+                <div id="errorMessageUpdate" class="alert alert-warning d-none"></div>
                     <img src="images/BarangayLogo.png" class="BarangayLogo img-fluid">
                     <form id="reportForm" action="" method="post" enctype="multipart/form-data" class="form">
                         <div class="form-row">

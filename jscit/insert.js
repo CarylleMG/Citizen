@@ -44,6 +44,11 @@ $('#submit').click(function(e){
                 $('#errorMessageUpdate').addClass('d-none');
                 alertify.set('notifier','position', 'top-right');
                 alertify.success(res.message);
+
+                // Show alertify message for a brief moment
+                setTimeout(function() {
+                    window.location.href = 'cindex.php'; // redirect after success
+                }, 1500); // 1500 milliseconds delay (1.5 seconds)
             }
             else if(res.status == 500) {
                 alert(res.message);
