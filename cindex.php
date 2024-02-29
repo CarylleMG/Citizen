@@ -30,7 +30,7 @@
             <div class="content2">
                 <p>Already filed a complaint? Check your status now.</p>
                 <div class = "border">
-                    <form id="searchForm" action="" method="post" enctype="multipart/form-data">
+                    <form action="ticket.php" method="post" enctype="multipart/form-data">
                         <h2>Ticket Status</h2>
                         <p>Input your ticket number and contact number to verify your filed complaint.</p>
                         <div class="form-row">
@@ -41,7 +41,7 @@
                             <label for="contact" class="spacemain">Contact No.:</label>
                             <input type="tel" id="contact" name="contact" pattern="09[0-9]{9}" maxlength="11" placeholder=" 09xxxxxxxxx" class="ticketinput" required>
                         </div>
-                        <button name="search" id="search">Search</button>
+                        <button type="submit" name="search" id="search">Search</button>
                     </form>
                 </div>
                 <br><br>
@@ -50,7 +50,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-        <script src="jscit/insert.js"></script>
-
+        <!-- <script src="jscit/insert.js"></script> -->
     </body>
 </html>
