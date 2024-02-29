@@ -42,7 +42,7 @@ $('#submit').click(function(e){
             }
             else if(res.status == 200){
                 $('#errorMessageUpdate').addClass('d-none');
-                alertify.set('notifier','position', 'top-right');
+                alertify.set('notifier','position', 'center');
                 alertify.success(res.message);
 
                 // Show alertify message for a brief moment
