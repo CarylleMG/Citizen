@@ -83,7 +83,7 @@ if(isset($_POST['search'])){
                 </ul>
             </div>
             <div class="content4">
-                <p>Report Details</p>
+                <p><b>Report Details</b></p>
                 <div class = "borderform">
                     <img src="images/BarangayLogo.png" class="BarangayLogo img-fluid">
                     <form action="api/report-crud.php" method="post" enctype="multipart/form-data" class="form">
@@ -203,6 +203,7 @@ if(isset($_POST['search'])){
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="jscit/date.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="jscit/insert.js"></script>
         <script>
             var loadFile = function(event){
                 var output = document.getElementById('output');

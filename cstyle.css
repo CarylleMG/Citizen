@@ -86,7 +86,8 @@
 }
 
 .borderform{
-    width: 70%;
+    width: 40vmax;
+    min-width: 70vmin;
     height: auto;
     padding: 10px;
     margin: auto;

@@ -17,7 +17,7 @@
             </div>
 
             <div class="content4">
-                <h2>File A Report</h2>
+                <h2><b>File A Report</b></h2>
                 <div class = "borderform">
                     <img src="images/BarangayLogo.png" class="BarangayLogo img-fluid">
                     <form id="reportForm" action="" method="post" enctype="multipart/form-data" class="form">
