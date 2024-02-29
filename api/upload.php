@@ -125,15 +125,15 @@ if (isset($_POST['submit'])) {
                 'status' => 200,
                 'message' => 'Your ticket number is '.$ticketno
                 ];
-                echo json_encode($result);
-                return;
+            echo json_encode($result);
+            return;
         } else {
             $result = [
                 'status' => 500,
                 'message' => 'Failed to Submit Report'
                 ];
-                echo json_encode($result);
-                return;
+            echo json_encode($result);
+            return;
         }
         }
     }

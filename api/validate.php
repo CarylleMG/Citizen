@@ -26,16 +26,16 @@ if (isset($_POST['search'])) {
                 'status' => 200,
                 'message' => 'Ticket exist.'
                 ];
-                echo json_encode($result);
-                return;
+            echo json_encode($result);
+            return;
         }
         else {
             $result = [
                 'status' => 500,
                 'message' => 'Invalid Ticket Number or Contact Number'
                 ];
-                echo json_encode($result);
-                return;
+            echo json_encode($result);
+            return;
         }
     }
 }

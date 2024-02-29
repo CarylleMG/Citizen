@@ -1,64 +1,62 @@
 <?php require_once('api/connect.php');
 
-if(isset($_POST['search'])){
+$ticketnum = $_GET['ticketnum']; 
+$contact = $_GET['contact'];
 
-	$ticketnum = $_POST['ticketnum']; 
-    $contact = $_POST['contact'];
+$query = "SELECT report.*, 
+user.LastName AS userLN, user.FirstName as userFN,
+citizen.citizenID, citizen.LastName AS citiLN, citizen.FirstName AS citiFN, citizen.Contact,
+culprit.firstname AS culpritFN, culprit.lastname as culpritLN, culprit.address FROM report 
+LEFT JOIN user ON report.UserID = user.UserID
+LEFT JOIN culprit ON report.CulpritID = culprit.CulpritID
+LEFT JOIN citizen ON report.CitizenID = citizen.CitizenID
+WHERE TicketNum='$ticketnum' AND Contact='$contact'";
 
-	$query = "SELECT report.*, 
-	user.LastName AS userLN, user.FirstName as userFN,
-	citizen.LastName AS citiLN, citizen.FirstName AS citiFN, citizen.Contact,
-	culprit.firstname AS culpritFN, culprit.lastname as culpritLN, culprit.address FROM report 
-	LEFT JOIN user ON report.UserID = user.UserID
-	LEFT JOIN culprit ON report.CulpritID = culprit.CulpritID
-	LEFT JOIN citizen ON report.CitizenID = citizen.CitizenID
-	WHERE TicketNum='$ticketnum' AND Contact='$contact'";
+$result = $conn -> query($query);
 
-    $result = $conn -> query($query);
+if ($result->num_rows > 0) {
+    while ($val = $result->fetch_assoc()) {
+        // report table 
+        $date = $val['Date'];
+        $details = $val['Details'];
+        //$offCount = $val['OffenseCount'];
+        $behavior = $val['Behavior'];
+        $sanction = $val['Sanction'];
+        $status = $val['Status'];
+        $picture = $val['ImageFile'];
 
-    if ($result->num_rows > 0) {
-        while ($val = $result->fetch_assoc()) {
-            // report table 
-			$date = $val['Date'];
-			$details = $val['Details'];
-			//$offCount = $val['OffenseCount'];
-			$behavior = $val['Behavior'];
-			$sanction = $val['Sanction'];
-			$status = $val['Status'];
-			$picture = $val['ImageFile'];
+        // citizen info
+        $citizenId = $val['CitizenID']; 
+        $citiLN = $val['citiLN']; 
+        $citiFN = $val['citiFN']; 
+        $contact = $val['Contact'];
 
-			// citizen info
-			$citizenId = $val['CitizenID']; 
-			$citiLN = $val['citiLN']; 
-			$citiFN = $val['citiFN']; 
-            $contact = $val['Contact'];
-
-			// user info
-			$userId = $val['UserID'];
-			$userLN = $val['userLN'];
-			$userFN = $val['userFN'];
-			
-			// culprit info
-			$culpritId = $val['CulpritID'];
-			$culpritFN = $val['culpritFN'];
-			$culpritLN = $val['culpritLN'];
-			$address = $val['address'];
-        }
+        // user info
+        $userId = $val['UserID'];
+        $userLN = $val['userLN'];
+        $userFN = $val['userFN'];
+        
+        // culprit info
+        $culpritId = $val['CulpritID'];
+        $culpritFN = $val['culpritFN'];
+        $culpritLN = $val['culpritLN'];
+        $address = $val['address'];
     }
-
-	// from database
-	// May subject to change
-	if ($citizenId == NULL || $citizenId == 0) { // if there is no citizen report, display staff details
-		$firstnameVal = $userFN;
-		$lastnameVal = $userLN;
-        $contactVal = $contact;
-
-	} else { // otherwise, display citizen report
-		$firstnameVal = $citiFN;  
-		$lastnameVal = $citiLN;
-        $contactVal = $contact;
-	}
 }
+
+// from database
+// May subject to change
+if ($citizenId == NULL || $citizenId == 0) { // if there is no citizen report, display staff details
+    $firstnameVal = $userFN;
+    $lastnameVal = $userLN;
+    $contactVal = $contact;
+
+} else { // otherwise, display citizen report
+    $firstnameVal = $citiFN;  
+    $lastnameVal = $citiLN;
+    $contactVal = $contact;
+}
+
 ?>
 
 <html>

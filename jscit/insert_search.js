@@ -98,7 +98,7 @@ $('#search').click(function(e){
             }
             else if(res.status == 200){ 
                 
-                window.location.href = "ticket.php";
+                window.location.href = "ticket.php?contact=" + encodeURIComponent(contact) + "&ticketnumber=" + encodeURIComponent(ticketnum);
                 
             }
             else if(res.status == 500) { 
