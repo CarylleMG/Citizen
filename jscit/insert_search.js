@@ -51,7 +51,7 @@ $('#submit').click(function(e){
                     icon: "success",
                     button: "OK",
                 }).then(function() {
-                    window.location.href = "cindex.php";
+                    window.location.href = "index.php";
                 });
             }
             else if(res.status == 500) {

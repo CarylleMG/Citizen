@@ -20,7 +20,7 @@ if (isset($_POST['search'])) {
         LEFT JOIN citizen ON report.CitizenID = citizen.CitizenID
         WHERE TicketNum='$ticketnum' AND Contact='$contact'";
 
-        $result = $conn -> query($query);
+        $result = $mysqli -> query($query);
         if ($result->num_rows > 0) { // success
             $result = [
                 'status' => 200,

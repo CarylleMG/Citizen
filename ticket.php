@@ -12,7 +12,7 @@ LEFT JOIN culprit ON report.CulpritID = culprit.CulpritID
 LEFT JOIN citizen ON report.CitizenID = citizen.CitizenID
 WHERE TicketNum='$ticketnum' AND Contact='$contact'";
 
-$result = $conn -> query($query);
+$result = $mysqli -> query($query);
 
 if ($result->num_rows > 0) {
     while ($val = $result->fetch_assoc()) {
@@ -71,7 +71,7 @@ if ($citizenId == NULL || $citizenId == 0) { // if there is no citizen report, d
             <div class="navbar">
                 <img src="images/Logo.png" class="Logo">
                 <ul>
-                    <li><a href="cindex.php">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">About</a></li>
                 </ul>
             </div>
@@ -97,7 +97,7 @@ if ($citizenId == NULL || $citizenId == 0) { // if there is no citizen report, d
                             
                         <div class="space form-group row">
                             <label for="forwho" class="col-md-3 col-form-label"><b>For/To</b>(Para sa/kay)<b>:</b></label>
-                            <div class="col-md">
+                            <div class="col-md-5">
                                 <input type="text" class="form-control" value="Hon. Walfredo R. Dimaguila Jr." id="forwho" name="forwho" readonly>
                             </div>
                         </div>
@@ -114,7 +114,7 @@ if ($citizenId == NULL || $citizenId == 0) { // if there is no citizen report, d
 
                         <div class="space form-group row">
                             <label for="phone" class="col-md-3 col-form-label"><b>Contact No.:</b></label>
-                            <div class="col-md">
+                            <div class="col-md-5">
                                 <input type="tel" class="form-control" value="<?=$contact?>" id="phone" name="phone" pattern="09[0-9]{9}" maxlength="11" readonly>
                             </div>
                         </div>
@@ -129,8 +129,8 @@ if ($citizenId == NULL || $citizenId == 0) { // if there is no citizen report, d
                         <hr>
                         <div class="space form-group row">
                             <label for="when" class="col-md-3 col-form-label"><b>When</b>(Kailan)<b>:</b></label>
-                            <div class="col-md-3">
-                                <input type="date" value="<?=$date?>" class="form-control" name="when" id="when" placeholder="MM/dd/yyyy" readonly>
+                            <div class="col-md-5">
+                                <input type="date" value="<?=$date?>" class="form-control" name="when" id="when" placeholder="mm/dd/yyyy" readonly>
                             </div>
                         </div>
 
