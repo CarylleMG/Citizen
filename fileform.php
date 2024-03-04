@@ -10,7 +10,7 @@
     <body>
         <div class="backgroundmain">
             <div class="navbar">
-                <img src="images/Logo.png" class="Logo">
+                <img src="images/Logo.png" class="Logo img-fluid">
                 <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">About</a></li>
@@ -91,6 +91,7 @@
                                 <div class="col-md">
                                     <input type="file" name="picture" id="picture" accept="image/*" onchange="loadFile(event)" class="form-control" required>
                                 </div>
+                                <br>
                                 <img id="output"/>
                         </div>
 

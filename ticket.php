@@ -70,7 +70,7 @@ if ($citizenId == NULL || $citizenId == 0) { // if there is no citizen report, d
     <body>
         <div class="backgroundmain">
             <div class="navbar">
-                <img src="images/Logo.png" class="Logo">
+                <img src="images/Logo.png" class="Logo img-fluid">
                 <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">About</a></li>

@@ -12,7 +12,7 @@
         <div class="backgroundmain">
             <div class="banner">
                 <div class="navbar">
-                    <img src="images/Logo.png" class="Logo">
+                    <img src="images/Logo.png" class="Logo img-fluid">
                     <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="about.php">About</a></li>
@@ -30,7 +30,6 @@
             <div class="content2">
                 <p>Already filed a complaint? Check your status now.</p>
                 <div class = "border">
-
                     <form id="searchForm" action="" method="post" enctype="multipart/form-data">
                         <h2>Ticket Status</h2>
                         <p>Input your ticket number and contact number to verify your filed complaint.</p>

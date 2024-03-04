@@ -72,7 +72,7 @@
 
 .border2{
     width: 750px;
-    height: 450px;
+    height: auto;
     padding: 10px;
     margin: auto;
     margin-top: 20px;
@@ -87,7 +87,7 @@
 
 .borderform{
     width: 50vmax;
-    min-width: 70vmin;
+    min-width: 25vmin;
     height: auto;
     padding: 10px;
     margin: auto;
@@ -241,8 +241,9 @@ button:hover{
 }
 
 .Logo{
-    width: 270px;
+    position: relative;
     margin-left: 1%;
+    width: 230px;
     cursor: default;
 }
 
@@ -255,6 +256,28 @@ button:hover{
     text-align: center;
     font-size: 2vmin;
     font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .borderform {
+        width: 40vmax;
+    }
+    .border{
+        width: 37vmax;
+    }
+    .border2{
+        width: 42vmax;
+        font-size: 18px;
+        text-align: justify;
+    }
+    .Logo {
+        width: 40vmax;
+        justify-content: center;
+        margin-left: 2rem;
+        }
+    .navbar{
+        font-size: 18px;
+    }
 }
 
 .myMargin {
@@ -276,11 +299,12 @@ button:hover{
     display: inline-block;
     margin: 0 20px;
     font-weight: bold;
-    font-size: 3vmin;
+    font-size: 4.5vmin 7vmax;
 }
 .navbar ul li a{
     content: '';
-    padding: 20px 10;
+    font-size: 20px;
+    padding: 15px 10;
     text-decoration: none;
     color: #34574f;
     text-transform: uppercase;
