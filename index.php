@@ -3,6 +3,7 @@
 <html>
     <head>
         <title>Citizen Page</title>
+        <meta name="viewport" content="width=device-width, initial scale=1.0">
         <link rel="stylesheet" href="cstyle.css">
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     </head>
