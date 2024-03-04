@@ -62,7 +62,7 @@ if ($citizenId == NULL || $citizenId == 0) { // if there is no citizen report, d
 <html>
     <head>
         <title>Citizen Page</title>
-        <meta name="viewport" content="width=device-width, initial scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="cstyle.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>

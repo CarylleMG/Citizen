@@ -3,24 +3,25 @@
 <html>
     <head>
         <title>Citizen Page</title>
-        <meta name="viewport" content="width=device-width, initial scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="cstyle.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     </head>
 
     <body>
         <div class="backgroundmain">
+            <div class="navbar">
+                <img src="images/Logo.png" class="Logo img-fluid">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="about.php">About</a></li>
+                </ul>
+            </div>
             <div class="banner">
-                <div class="navbar">
-                    <img src="images/Logo.png" class="Logo img-fluid">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="about.php">About</a></li>
-                    </ul>
-                </div>
                 <div class="content">
                     <h1>Online<br>Complaint Portal</h1>
-                    <p>If you have any complaints about waste or plastic<br> burning, you are at the right place.</p>
+                    <p>If you have any complaints about <br>waste or plastic burning,<br> you are at the right place.</p>
                     <div>
                         <button type="button" onclick="document.location='fileform.php'">Report Complaints</button>
                     </div>
@@ -29,18 +30,19 @@
             </div>
             <div class="content2">
                 <p>Already filed a complaint? Check your status now.</p>
-                <div class = "border">
+                <div class = "borderticket">
                     <form id="searchForm" action="" method="post" enctype="multipart/form-data">
                         <h2>Ticket Status</h2>
                         <p>Input your ticket number and contact number to verify your filed complaint.</p>
-                        <div class="form-row">
+                        <div class="indexinput form-row">
                             <label for="ticketnum" class="spacemain">Ticket No.:</label>
                             <input type="number" id="ticketnum" name="ticketnum" class="ticketinput" required>
                         </div>
-                        <div class="form-row">
+                        <div class="indexinput form-row">
                             <label for="contact" class="spacemain">Contact No.:</label>
                             <input type="tel" id="contact" name="contact" pattern="09[0-9]{9}" maxlength="11" placeholder=" 09xxxxxxxxx" class="ticketinput" required>
                         </div>
+                        <br>
                         <button name="search" id="search">Search</button>
                     </form>
 

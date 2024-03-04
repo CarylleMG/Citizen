@@ -39,10 +39,10 @@
     cursor: default;
 }
 
-.border{
+.borderticket{
     position: relative;
     width: 400px;
-    height: 230px;
+    height: auto;
     padding: 10px;
     margin: auto;
     margin-top: 30px;
@@ -53,17 +53,17 @@
 	justify-content: space-between;
 }
 
-.border h2{
+.borderticket h2{
     margin-top: 20px;
     text-align: center;
 }
 
-.border p{
+.borderticket p{
     font-size: medium;
     text-align: center;
 }
 
-.border button{
+.borderticket button{
     font-size: medium;
     text-align: center;
     border-radius: 3px;
@@ -104,7 +104,7 @@
 
 button{
     margin-top: 20px;
-    width: 130px;
+    width: 180px;
     padding: 8px 0;
     text-align: center;
     color: #d6edd7;
@@ -147,7 +147,7 @@ button:hover{
     font-weight: bolder;
 }
 .content p{
-    margin-top: 20px;
+    margin-top: 15px;
     font-weight: 100;
 }
 
@@ -158,6 +158,10 @@ button:hover{
     font-size: 130%;
     text-align: center;
     color:#294941;
+}
+
+.content2 p{
+    margin: 1rem;
 }
 
 .content3{
@@ -225,6 +229,11 @@ button:hover{
     border-radius: 5px;
 }*/
 
+.indexinput{
+    text-align: left;
+    margin-left: 5rem;
+}
+
 .inputname{
     width: 30%;
     height: 25px;
@@ -262,13 +271,16 @@ button:hover{
     .borderform {
         width: 40vmax;
     }
-    .border{
-        width: 37vmax;
+    .borderticket{
+        width: 40vmax;
     }
     .border2{
         width: 42vmax;
         font-size: 18px;
         text-align: justify;
+    }
+    .indexinput{
+        margin-left: 3rem;
     }
     .Logo {
         width: 40vmax;
@@ -276,7 +288,7 @@ button:hover{
         margin-left: 2rem;
         }
     .navbar{
-        font-size: 18px;
+        font-size: 15px;
     }
 }
 
@@ -331,6 +343,7 @@ button:hover{
 .spacemain{
     font-size: 15px;
     color: #285c50;
+    text-align: left;
 }
 
 .submitbtn{
@@ -356,7 +369,9 @@ textarea{
 }
 
 .ticketinput{
-    width: 40%;
+    height: 20px;
+    width: 45%;
     margin-top: 10px;
     border-radius: 3px;
+    font-size: medium;
 }
