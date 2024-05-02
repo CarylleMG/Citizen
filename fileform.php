@@ -28,7 +28,8 @@
                                 <input type="text" class="form-control" value="Hon. Walfredo R. Dimaguila Jr." id="forwho" name="forwho" readonly>
                             </div>
                         </div>
-                    
+
+                        <!--Sender Name-->
                         <div class="space form-group row">
                             <label for="lname" class="col-md-3 col-form-label"><b>From</b>(Mula sa/kay)<b>:</b></label>
                             <div class="col-md">
@@ -39,6 +40,15 @@
                             </div>
                         </div>
 
+                        <!--Email-->
+                        <div class="space form-group row">
+                            <label for="email" class="col-md-3 col-form-label"><b>Email:</b></label>
+                            <div class="col-md-5">
+                                <input type="email" class="email form-control" name="email" placeholder="name@example.com" required>
+                            </div>
+                        </div>
+
+                        <!--Contact no.-->
                         <div class="space form-group row">
                             <label for="phone" class="col-md-3 col-form-label"><b>Contact No.:</b></label>
                             <div class="col-md-5">
@@ -55,6 +65,7 @@
 
                         <hr>
 
+                        <!--Date Input-->
                         <div class="space form-group row">
                             <label for="when" class="col-md-3 col-form-label"><b>When</b>(Kailan)<b>:</b></label>
                             <div class="col-md-5">
@@ -62,6 +73,7 @@
                             </div>
                         </div>
 
+                        <!--Place input-->
                         <div class="space form-group row">
                             <label for="place" class="col-md-3 col-form-label"><b>Where</b>(Saan)<b>:</b></label>
                             <div class="col-md">
@@ -69,13 +81,14 @@
                             </div>
                         </div>
 
+                        <!--Suspect Name-->
                         <div class="space form-group row">
                             <label for="susfname" class="col-md-3 col-form-label"><b>Who</b>(Sino)<b>:</b></label>
                             <div class="col-md">
-                                <input type="text" class="form-control" id="susfname" name="susfname" placeholder="First name" required>
+                                <input type="text" class="form-control" id="susfname" name="susfname" placeholder="First name (N/A if suspect is unknown)" required>
                             </div>
                             <div class="col-md">
-                                <input type="text" class="form-control" id="suslname" name="suslname" placeholder="Last name" required>
+                                <input type="text" class="form-control" id="suslname" name="suslname" placeholder="Last name (N/A if suspect is unknown)" required>
                             </div>
                         </div>
 

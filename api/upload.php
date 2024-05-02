@@ -3,6 +3,7 @@
 if (isset($_POST['submit'])) {
     $FirstName = $_POST['FirstName'];
     $LastName = $_POST['LastName'];
+    $email = $_POST['email'];
     $phone = $_POST['phone'];
     $whendate = $_POST['whendate'];
     $place = $_POST['place'];
@@ -33,12 +34,13 @@ if (isset($_POST['submit'])) {
                 $citizenId = $vals['CitizenID'];
                 $LastName = $vals['LastName'];
                 $FirstName = $vals['FirstName'];
+                $email = $vals['Email'];
                 $phone = $vals['Contact'];
             }
         } else {
-            $stmt = $mysqli->prepare("INSERT into `citizen` (`LastName`, `FirstName`, `Contact`)
-                    values(?, ?, ?)");
-            $stmt->bind_param("sss", $LastName, $FirstName, $phone);
+            $stmt = $mysqli->prepare("INSERT into `citizen` (`LastName`, `FirstName`, `Email`, `Contact`)
+                    values(?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $LastName, $FirstName, $email, $phone);
             $stmt->execute();
 
             // find culprit id
@@ -54,6 +56,7 @@ if (isset($_POST['submit'])) {
                     $citizenId = $vals['CitizenID'];
                     $LastName = $vals['LastName'];
                     $FirstName = $vals['FirstName'];
+                    $email = $vals['Email'];
                     $phone = $vals['Contact'];
                 }
             }
