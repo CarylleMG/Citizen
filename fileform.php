@@ -44,7 +44,7 @@
                         <div class="space form-group row">
                             <label for="email" class="col-md-3 col-form-label"><b>Email:</b></label>
                             <div class="col-md-5">
-                                <input type="email" class="email form-control" name="email" placeholder="name@example.com" required>
+                                <input type="email" class="form-control" name="email" placeholder="name@example.com" required>
                             </div>
                         </div>
 

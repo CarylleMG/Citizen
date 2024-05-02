@@ -1,6 +1,29 @@
 <?php require_once('connect.php');
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'phpmailer/src/Exception.php';
+require 'phpmailer/src/PHPMailer.php';
+require 'phpmailer/src/SMTP.php';
+
 if (isset($_POST['submit'])) {
+
+    //email
+    $mail = new PHPMailer(true);
+    $mail -> isSMTP();
+    $mail -> Host = 'smpt.gmail.com';
+    $mail -> SMTPAuth = true;
+    $mail -> Username = 'chipper.route2345@gmail.com'; //gmail account
+    $mail -> Password = 'ivfomrcujptyypdn'; //same gmail's app password
+    $mail -> SMTPSecure = 'tls';
+    $mail -> Port = 443;
+
+    $mail -> setFrom('chipper.route2345@gmail.com');
+    $mail -> addAddress($_POST['email']);
+    $mail -> isHTML(true);
+
+    //other form info
     $FirstName = $_POST['FirstName'];
     $LastName = $_POST['LastName'];
     $email = $_POST['email'];
@@ -120,12 +143,17 @@ if (isset($_POST['submit'])) {
         while ($row = $resultticket->fetch_assoc()) {
             $ticketno = $row['TicketNum'];
         }
+        
+        $mail -> Subject = "Ticket Number";
+        $mail -> Body = "Your ticket no. is " .$ticketno;
+        $mail -> send();
+
 
         if ($stmt3) {
             move_uploaded_file($_FILES["picture"]["tmp_name"], "../upload_pictures/$imgContent");
             $result = [
                 'status' => 200,
-                'message' => 'Your ticket number is '.$ticketno
+                'message' => 'Form Submitted! Kindly check your email for a ticket number.'
                 ];
             echo json_encode($result);
             return;
