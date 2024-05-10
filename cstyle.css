@@ -288,12 +288,7 @@ button:hover{
     }
     .indexinput{
         margin-left: 3rem;
-    }
-    .Logo {
-        width: 40vmax;
-        justify-content: center;
-        margin-left: 2rem;
-        }
+    } 
     .navbar{
         font-size: 15px;
     }
@@ -332,7 +327,7 @@ button:hover{
     border-radius: 10%; 
 }
 .navbar ul li a:hover, .navbar ul li a:focus{  
-    background-color: #d6edd7; 
+    color: #3c543d; 
     cursor: pointer; 
 }
 

@@ -5,7 +5,7 @@ $('#submit').click(function(e){
 
     var FirstName = $('#FirstName').val();
     var LastName = $('#LastName').val();
-    var email = $('#email').val();
+    var mail = $('#email').val();
     var phone = $('#phone').val();
     var whendate = $('#whendate').val();
     var place = $('#place').val();
@@ -16,7 +16,7 @@ $('#submit').click(function(e){
     formData.append('submit', true);
     formData.append('FirstName', FirstName);
     formData.append('LastName', LastName);
-    formData.append('email', email);
+    formData.append('email', mail);
     formData.append('phone', phone);
     formData.append('whendate', whendate);
     formData.append('place', place);
