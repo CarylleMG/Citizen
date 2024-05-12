@@ -309,7 +309,7 @@ button:hover{
     background-color: #A8C6A3;
 }
 
-/*.navbar ul li{
+.navbar ul li{
     list-style: none;
     display: inline-block;
     margin: 0 20px;
@@ -326,7 +326,7 @@ button:hover{
     transition: 0.6s;
     position: relative;
     border-radius: 10%; 
-}*/
+}
 .navbar ul li a:hover, .navbar ul li a:focus{  
     color: #547460; 
     cursor: pointer; 
