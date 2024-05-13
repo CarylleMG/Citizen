@@ -20,18 +20,28 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    background: #a2bdb7;
-    background: linear-gradient(to bottom, #fff, #e8f1e7, #c3d9ce);
+    background: #FAFAF7;
     background-size: cover;
     overflow-y: scroll;
 }
 
 .banner{
     width: 100%;
-    height: 83vh;
-    background-image:url(images/HomeBG2.png);
+    height: 100vh;
     background-size: cover;
     background-position: center;
+    z-index: 999; /* Ensure the overlay is above other content */
+    opacity: 1; /* Initially invisible */
+    backdrop-filter: blur(0px); /* Apply blur effect */
+    transition: opacity 0.5s ease, backdrop-filter 0.5s ease; /* Smooth transition */
+}
+
+.banimg {
+    margin: auto;
+    float: right;
+    margin-top: 2%;
+    margin-right: 5%;
+    width: 80vmin;
 }
 
 .BarangayLogo{
@@ -46,11 +56,13 @@
     padding: 10px;
     margin: auto;
     margin-top: 30px;
-    background-color: #fff;
-    border: 2px solid #32524b;
+    background-color: #f2f5ee;
+    border: transparent;
+    border-radius: 10px;
     flex-direction: column;
     display: flex;
 	justify-content: space-between;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .borderticket h2{
@@ -110,7 +122,9 @@ button{
     text-align: center;
     color: #d6edd7;
     font-weight: 600;
-    background-color: #243e38;
+    background-color: #4a6a58;
+    border-radius: 10px;
+    border: transparent;
 }
 button:hover{
     background-color: rgb(195, 226, 195);
@@ -137,7 +151,8 @@ button:hover{
 
 .content{
     margin: auto;
-    margin-left: 15%;
+    margin-left: 20%;
+    margin-top: 5%;
     transform: translateY(30%);
     position: absolute;
     text-align: left;
@@ -152,20 +167,19 @@ button:hover{
     font-weight: 100;
 }
 
-.content2{
+/*.content2{
     position: absolute;
     width: 100%;
     margin-top: 5%;
     font-size: 130%;
     text-align: center;
     color:#294941;
-    opacity: 0;
-    animation: fade-in 1s;
-}
+    animation: fadeIn 3s;
+}*/
 
-.content2 p{
+/*.content2 p{
     margin: 1rem;
-}
+}*/
 
 .content3{
     width: 100%;
@@ -187,6 +201,11 @@ button:hover{
 
 .content4 h2{
     font-size: 120%;
+}
+
+
+.fade-out {
+    animation: fadeOut 1s;
 }
 
 .form{
@@ -270,10 +289,15 @@ button:hover{
     font-weight: bold;
 }
 
-@keyframes fade-in{
-    from {opacity: 0;}
-    to {opacity: 1;}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
+
+@keyframes fadeOut {
+    100% { opacity: 1; }
+    0% { opacity: 0; }
+  }
 
 @media (max-width: 768px) {
     .borderform {
@@ -302,6 +326,7 @@ button:hover{
 .navbar{
     width: 100%;
     margin: auto;
+    position: relative;
     padding: 10px 0;
     display: flex;
     align-items: center;
@@ -318,7 +343,7 @@ button:hover{
 }
 .navbar ul li a{
     content: '';
-    font-size: 20px;
+    font-size: 17px;
     padding: 15px 10;
     text-decoration: none;
     color: #34574f;
@@ -328,8 +353,27 @@ button:hover{
     border-radius: 10%; 
 }
 .navbar ul li a:hover, .navbar ul li a:focus{  
-    color: #547460; 
+    color: #7d7352; 
     cursor: pointer; 
+}
+
+.popup-form{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 130%;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #777d78;
+    border-bottom: transparent;
+    border-radius: 10px;
+    z-index: 1000;
+    color:#294941;
+    background: linear-gradient(to bottom, #fff, #e8f1e7, #c3d9ce, transparent);
+    animation: fadeIn 1s;
+    transition: opacity 0.5s ease;
 }
 
 /*.row{
@@ -347,6 +391,12 @@ button:hover{
     font-size: 15px;
     color: #285c50;
     text-align: left;
+}
+
+.square-button {
+    width: 60px;
+    height: 50px;
+    padding: 0;
 }
 
 .submitbtn{
