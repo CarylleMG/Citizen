@@ -21,6 +21,7 @@
     height: 100%;
     position: absolute;
     background: #FAFAF7;
+    /*background: linear-gradient(#FAFAF7, #e2e8da, #c4dbbd, #84a396);*/
     background-size: cover;
     overflow-y: scroll;
 }
@@ -53,16 +54,14 @@
     position: relative;
     width: 400px;
     height: auto;
-    padding: 10px;
     margin: auto;
-    margin-top: 30px;
-    background-color: #f2f5ee;
+    margin-top: 10px;
+    background-color: transparent;
     border: transparent;
     border-radius: 10px;
     flex-direction: column;
     display: flex;
 	justify-content: space-between;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .borderticket h2{
@@ -150,12 +149,17 @@ button:hover{
 }
 
 .content{
+    padding: 80px 50px;
     margin: auto;
     margin-left: 20%;
-    margin-top: 5%;
     transform: translateY(30%);
     position: absolute;
     text-align: left;
+    background: linear-gradient(#FAFAF7,#FAFAF7,transparent);
+    border-radius: 5px;
+    border-bottom: 2px solids#A8C6A3;
+    /*box-shadow: 3px 3px 5px rgba(217, 227, 216, 0.3);*/
+    /*background: #FAFAF7;*/
     color:#243e38;
 }
 .content h1{
@@ -366,12 +370,13 @@ button:hover{
     font-size: 130%;
     text-align: center;
     padding: 20px;
-    border: 2px solid #777d78;
+    /*border: 2px solid #777d78;*/
     border-bottom: transparent;
     border-radius: 10px;
     z-index: 1000;
     color:#294941;
-    background: linear-gradient(to bottom, #fff, #e8f1e7, #c3d9ce, transparent);
+    background: linear-gradient(to bottom, #fff, #e8f1e7, transparent);
+    box-shadow: 3px 3px 5px rgba(217, 227, 216, 0.3);
     animation: fadeIn 1s;
     transition: opacity 0.5s ease;
 }
